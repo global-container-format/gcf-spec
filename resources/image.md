@@ -65,7 +65,7 @@ Images that don't take advantage of mip-mapping should have the `Mip Level Count
 
 Mip levels are stored in oder from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height and depth) must be computed by the following formula:
 
-```
+```python
 round(max(1, x * 0.5 ** (mip_level - 1)))
 ```
 
