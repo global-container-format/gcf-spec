@@ -3,7 +3,7 @@
 The Global Container Format (GCF) is a container format for deployment of generic resources. The main purpose
 of the format is to be linear and simple to parse while maintaining an optimized layout. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://github.khronos.org/KTX-Specification) file formats. While the DDS format feels clunky, limited and outdated, the KTX format is great and flexible but too complicated to parse quickly. This format is not meant to be an all-encompassing, highly flexible format for data exchange but rather a format optimized for asset loading in game engines.
 
-**Format stability: 🧪 UNSTABLE 🧪**
+**Format stability: 🧪 WIP - UNSTABLE 🧪**
 
 This repository contains both the spec and the reference C implementation.
 
@@ -72,11 +72,11 @@ Resource descriptor structures must be aligned on a 64 bits boundary. Padding mu
 
 The following resource types are standardized:
 
-Type #      | Name              | Format | Resource type family
------------:|-------------------|:------:|:-------------------
-0           | Blob              | ❌     | Blob
-1           | Color Map         | ✅     | Image
-0xffffffff  | Test              | ❌     | Test
+Type #      | Name                                               | Format | Resource type family
+-----------:|----------------------------------------------------|:------:|:-------------------
+0           | Blob                                               | ❌     | Blob
+1           | [Color Map](resource-formats/color-map.md)         | ✅     | Image
+0xffffffff  | Test                                               | ❌     | Test
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`, while the `Resource type family` column specifies how the `Type Data` field in the resource descriptor is used.
 
@@ -107,15 +107,33 @@ Height                 | uint16     | Resource height
 Depth                  | uint16     | Resource depth
 Layer Count            | uint8      | Resource layer count
 Mip Level Count        | uint8      | Number of mip levels
-Flags                  | uint16     | Resource flags
+Flags                  | uint16     | Image flags
 Reserved               | uint64     | Reserved
 
-The `Width`, `Height` and `Depth` fields describe the resource dimensions; their units and specific meanings depend on the resource type.
-`Layer Count` specify the number of layers in layered resources such as array textures.
-`Mip Level Count` specifies the number of mip levels for mip maps.
-`Flags` is a bit set whose definition is entirely up to the resource type.
+The `Width`, `Height` and `Depth` fields describe the resource dimensions, in pixels.
+`Layer Count` specifies the number of layers in layered images.
+`Mip Level Count` specifies the number of mip levels for mip mapped images.
+`Flags` specifies the image flags.
 
-Layered resources that support mip-mapping are can be read in the following way:
+For each image resource, each mip level is represented by a collection of `Layer Count` images of the same type and size. The images within the same mip level are all supercompressed together.
+
+##### Flags
+
+The following resource descriptor flags are available:
+
+Name           | Value     | Description
+---------------|----------:|------------------------------------------
+Image 1D       | 0x0001    | The image is a 1D image
+Image 2D       | 0x0003    | The image is a 2D image
+Image 3D       | 0x0007    | The image is a 3D image
+
+1D images only extend along the `Width` axis. 2D images extend along the `Width` and `Height` axes and 3D images extend along the `Width`, `Height` and `Depth` axes. Whenever not used, `Height` and `Depth` must be set to 1.
+
+1D images are stored one texel after the other in a linear fashion. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of 2D images.
+
+##### Layers and mip maps
+
+Layered, mip-mapped images must be accessed following the order as shown in the pseudo-code below:
 
 ```C
 for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++mip_level) {
@@ -125,9 +143,8 @@ for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++m
 }
 ```
 
-##### Currently standardised image resources
-
-* [Color Map](resource-formats/color-map.md)
+Images that don't take advantage of layers should have the `Layer Count` type data field set to 1.
+Images that don't take advantage of mip-mapping should have the `Mip Level Count` type data field set to 1.
 
 ### Supercompression Scheme
 

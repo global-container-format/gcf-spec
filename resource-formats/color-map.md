@@ -27,22 +27,6 @@ Where `x` is the dimension to scale and `mip_level` is the mip level number, wit
 
 The rounding function used to compute the dimensions of the mip levels returns an integer value that is the value of its only argument rounded to the closest integer. For values equally close to two integers (i.e. 1.5, equally close to both 1 and 2), the closest even integer will be used.
 
-## Flags
-
-The following resource descriptor flags are available:
-
-Name           | Value     | Description
----------------|----------:|------------------------------------------
-Image 1D       | 0x0001    | The image is a 1D image
-Image 2D       | 0x0003    | The image is a 2D image
-Image 3D       | 0x0007    | The image is a 3D image
-
-1D images only extend along the `Width` axis. 2D images extend along the `Width` and `Height` axes and 3D images extend along the `Width`, `Height` and `Depth` axes. Whenever not used, `Height` and `Depth` must be set to 1.
-
-1D images are stored one texel after the other in a linear fashion. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of 2D images.
-
-For each image type, each mip level is represented by a collection of `Layer Count` images of the same type and size. The images within the same mip level are all supercompressed together.
-
 ## Mip Level Descriptor
 
 Name                   | Format  | Description
