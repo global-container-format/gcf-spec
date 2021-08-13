@@ -60,8 +60,8 @@ for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++m
 }
 ```
 
-Images that don't take advantage of layers should have the `Layer Count` type data field set to 1.
-Images that don't take advantage of mip-mapping should have the `Mip Level Count` type data field set to 1.
+Images that don't take advantage of layers must have the `Layer Count` type data field set to 1.
+Images that don't take advantage of mip-mapping must have the `Mip Level Count` type data field set to 1.
 
 Mip levels are stored in oder from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height and depth) must be computed by the following formula:
 
