@@ -84,7 +84,7 @@ The resource type range between (0x70000000-0xfffffffe) is available for private
 
 The resource type `0xffffffff` is meant for testing. It can be supported by GCF writers but a conformig GCF reader must always skip a resource whose resource type is `0xffffffff`.
 
-**Blob resource type family**
+#### Blob resource type family
 
 This is a completely generic resource type and the content data consists of an unstructured sequence of bytes. The type specific data only contains the expected uncompressed size of the content data. The supercompression scheme is applied to the entire data blob.
 
@@ -96,7 +96,7 @@ Rsvd2                  | uint16     | Reserved
 
 *Note: The actual size of the uncompressed data may differ from the expected uncompressed size and should not be trusted.*
 
-**Image resource type family**
+#### Image resource type family
 
 The format for the `Type Data` structure of image resource types is as follows:
 
@@ -147,4 +147,4 @@ The supercompression scheme `0xffff` is meant for testing. It can be supported b
 
 ## Bugs
 
-File any issue on the [GitHub repository](https://github.com/moongoal/graphics-container-format).
+File any issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec).
