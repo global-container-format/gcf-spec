@@ -9,6 +9,8 @@ This repository contains both the spec and the reference C implementation.
 
 ## Container
 
+![Container](images/container.svg)
+
 The general structure of the format is:
 
 * Header
@@ -46,6 +48,8 @@ Unpadded       | 0       | Enabled when there is no padding between resources
 
 The `Unpadded` flag, when enabled, requires no padding to be present between any two consequent resources.
 
+![Padded vs unpadded](images/padding.svg)
+
 ## Resources
 
 Each resource consists of a 256 bits descriptor and some associated content data. The resource descriptor has the following structure:
@@ -68,83 +72,23 @@ The `Format` field is an enumeration with the same values and meanings as [`VkFo
 
 Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after** the resource content data to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this latter case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
 
+![Resource Descriptor](images/resource-descriptor.svg)
+
 ### Resource Types
 
 The following resource types are standardized:
 
-Type #      | Name                                               | Format | Resource type family
------------:|----------------------------------------------------|:------:|:-------------------
-0           | Blob                                               | ❌     | Blob
-1           | [Color Map](resource-formats/color-map.md)         | ✅     | Image
-0xffffffff  | Test                                               | ❌     | Test
+Type #      | Name                                               | Format
+-----------:|----------------------------------------------------|:------:
+0           | [Blob](resources/blob.md)                          | ❌
+1           | [Image](resources/image.md)                        | ✅
+0xffffffff  | Test                                               | ❌
 
-In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`, while the `Resource type family` column specifies how the `Type Data` field in the resource descriptor is used.
+In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
 
 The resource type range between (0x70000000-0xfffffffe) is available for private use and will not be standardized. When reading resource descriptors, any resource that has an unknown descriptor type may be skipped by advancing to the next resource descriptor.
 
 The resource type `0xffffffff` is meant for testing. It can be supported by GCF writers but a conformig GCF reader must always skip a resource whose resource type is `0xffffffff`.
-
-#### Blob resource type family
-
-This is a completely generic resource type and the content data consists of an unstructured sequence of bytes. The type specific data only contains the expected uncompressed size of the content data. The supercompression scheme is applied to the entire data blob.
-
-Name                   | Format     | Description
------------------------|------------|-----------------------------
-Uncompressed size      | uint64     | Uncompressed resource size
-Rsvd                   | uint64     | Reserved
-Rsvd2                  | uint16     | Reserved
-
-*Note: The actual size of the uncompressed data may differ from the expected uncompressed size and should not be trusted.*
-
-#### Image resource type family
-
-The format for the `Type Data` structure of image resource types is as follows:
-
-Name                   | Format     | Description
------------------------|------------|-----------------------------
-Width                  | uint16     | Resource width
-Height                 | uint16     | Resource height
-Depth                  | uint16     | Resource depth
-Layer Count            | uint8      | Resource layer count
-Mip Level Count        | uint8      | Number of mip levels
-Flags                  | uint16     | Image flags
-Reserved               | uint64     | Reserved
-
-The `Width`, `Height` and `Depth` fields describe the resource dimensions, in pixels.
-`Layer Count` specifies the number of layers in layered images.
-`Mip Level Count` specifies the number of mip levels for mip mapped images.
-`Flags` specifies the image flags.
-
-For each image resource, each mip level is represented by a collection of `Layer Count` images of the same type and size. The images within the same mip level are all supercompressed together.
-
-##### Flags
-
-The following resource descriptor flags are available:
-
-Name           | Value     | Description
----------------|----------:|------------------------------------------
-Image 1D       | 0x0001    | The image is a 1D image
-Image 2D       | 0x0003    | The image is a 2D image
-Image 3D       | 0x0007    | The image is a 3D image
-
-1D images only extend along the `Width` axis. 2D images extend along the `Width` and `Height` axes and 3D images extend along the `Width`, `Height` and `Depth` axes. Whenever not used, `Height` and `Depth` must be set to 1.
-
-1D images are stored one texel after the other in a linear fashion. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of 2D images.
-
-##### Layers and mip maps
-
-Layered, mip-mapped images must be accessed following the order as shown in the pseudo-code below:
-
-```C
-for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++mip_level) {
-    for(uint32_t layer = 0; layer < resource_descriptor.layer_count; ++layer) {
-        ...
-    }
-}
-```
-
-Images that don't take advantage of layers should have the `Layer Count` type data field set to 1.
-Images that don't take advantage of mip-mapping should have the `Mip Level Count` type data field set to 1.
 
 ### Supercompression Scheme
 

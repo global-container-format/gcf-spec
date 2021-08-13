@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="57.214672mm"
+   height="59.504353mm"
+   viewBox="0 0 57.21467 59.504352"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="resource-descriptor.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title7941">Resource Descriptor</title>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.4380896"
+     inkscape:cx="110.91103"
+     inkscape:cy="182.53383"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showborder="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     showguides="false"
+     inkscape:guide-bbox="true"
+     inkscape:snap-text-baseline="true">
+    <sodipodi:guide
+       position="28.517287,-32.302919"
+       orientation="0,-1"
+       id="guide8452" />
+    <sodipodi:guide
+       position="34.036763,38.16238"
+       orientation="0,-1"
+       id="guide13064" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-11.640142,-4.1637006)">
+    <rect
+       style="fill:#ff8080;stroke:none;stroke-width:0.821767"
+       id="rect4894"
+       width="57.214672"
+       height="16.13747"
+       x="11.640142"
+       y="47.530582" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
+       x="24.210558"
+       y="57.438137"
+       id="text4898"><tspan
+         sodipodi:role="line"
+         id="tspan4896"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
+         x="24.210558"
+         y="57.438137">Content data</tspan></text>
+    <rect
+       style="fill:#ffb380;stroke:none;stroke-width:1.34714"
+       id="rect31"
+       width="57.214668"
+       height="43.366882"
+       x="11.640142"
+       y="4.1637006" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
+       x="15.098451"
+       y="13.920625"
+       id="text3187"><tspan
+         sodipodi:role="line"
+         id="tspan3185"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
+         x="15.098451"
+         y="13.920625">Resource Descriptor</tspan></text>
+    <g
+       id="g20857"
+       transform="translate(0.64393616)">
+      <g
+         id="g20847">
+        <rect
+           style="fill:#e580ff;stroke:none;stroke-width:0.621086"
+           id="rect15809"
+           width="49.671391"
+           height="10.617995"
+           x="14.767845"
+           y="21.037102" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
+           x="22.510351"
+           y="27.677284"
+           id="text15887"><tspan
+             sodipodi:role="line"
+             id="tspan15885"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
+             x="22.510351"
+             y="27.677284">Common part</tspan></text>
+      </g>
+      <g
+         id="g20842">
+        <rect
+           style="fill:#87decd;stroke:none;stroke-width:0.621086"
+           id="rect15829"
+           width="49.671391"
+           height="10.617995"
+           x="14.767845"
+           y="31.655098" />
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
+           x="17.758358"
+           y="38.355572"
+           id="text17899"><tspan
+             sodipodi:role="line"
+             id="tspan17897"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
+             x="17.758358"
+             y="38.355572">Type specific data</tspan></text>
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata7939">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Resource Descriptor</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="57.214672mm"
+   height="64.549881mm"
+   viewBox="0 0 57.214672 64.549881"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="container.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title7941">Container</title>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.7500982"
+     inkscape:cx="-157.97931"
+     inkscape:cy="443.27529"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showborder="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-11.640143,-31.393112)">
+    <g
+       id="g6544"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,9.6319776)">
+      <rect
+         style="fill:#ffe680;stroke:none;stroke-width:1.1855"
+         id="rect31"
+         width="82.539192"
+         height="23.280285"
+         x="11.640142"
+         y="31.393112" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="33.358021"
+         y="46.973572"
+         id="text3187"><tspan
+           sodipodi:role="line"
+           id="tspan3185"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="33.358021"
+           y="46.973572">Header</tspan></text>
+    </g>
+    <g
+       id="g6552"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,9.6319776)">
+      <rect
+         style="fill:#80b3ff;stroke:none;stroke-width:1.1855"
+         id="rect4894"
+         width="82.5392"
+         height="23.280285"
+         x="11.640142"
+         y="54.673397" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="23.544704"
+         y="70.093658"
+         id="text4898"><tspan
+           sodipodi:role="line"
+           id="tspan4896"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="23.544704"
+           y="70.093658">Resource 1</tspan></text>
+    </g>
+    <g
+       id="g7839"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,9.6319776)">
+      <rect
+         style="fill:#87de87;stroke:none;stroke-width:1.1855"
+         id="rect6554"
+         width="82.5392"
+         height="23.280285"
+         x="11.640142"
+         y="77.953682" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="23.544704"
+         y="93.373947"
+         id="text6558"><tspan
+           sodipodi:role="line"
+           id="tspan6556"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="23.544704"
+           y="93.373947">Resource 2</tspan></text>
+    </g>
+    <g
+       id="g7322"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,41.906918)">
+      <rect
+         style="fill:#80b3ff;stroke:none;stroke-width:1.1855"
+         id="rect7316"
+         width="82.5392"
+         height="23.280285"
+         x="11.640142"
+         y="54.673397" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="47.134918"
+         y="67.049927"
+         id="text7320"><tspan
+           sodipodi:role="line"
+           id="tspan7318"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="47.134918"
+           y="67.049927">...</tspan></text>
+    </g>
+  </g>
+  <metadata
+     id="metadata7939">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Container</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
