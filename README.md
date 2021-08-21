@@ -82,7 +82,7 @@ Type #      | Name                                               | Format
 -----------:|----------------------------------------------------|:------:
 0           | [Blob](resources/blob.md)                          | ❌
 1           | [Image](resources/image.md)                        | ✅
-0xffffffff  | Test                                               | ❌
+0xffffffff  | Test                                               | ✅
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
 
