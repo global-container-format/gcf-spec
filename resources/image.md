@@ -66,10 +66,10 @@ Images that don't take advantage of mip-mapping must have the `Mip Level Count` 
 Mip levels are stored in oder from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height and depth) must be computed by the following formula:
 
 ```python
-round(max(1, x * 0.5 ** (mip_level - 1)))
+round(max(1, x * 0.5 ** mip_level))
 ```
 
-Where `x` is the dimension to scale and `mip_level` is the mip level number, with 1 being the number for the base level, 2 the number for the second level and so on. The `**` symbol represents the power operator.
+Where `x` is the dimension to scale and `mip_level` is the mip level number, with 0 being the number for the base level, 1 the number for the second level and so on. The `**` symbol represents the power operator.
 
 ### The rounding function
 
