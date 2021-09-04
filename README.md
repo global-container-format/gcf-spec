@@ -3,6 +3,8 @@
 The Global Container Format (GCF) is a container format for deployment of generic resources. The main purpose
 of the format is to be linear and simple to parse while maintaining an optimized layout. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://github.khronos.org/KTX-Specification) file formats. While the DDS format feels clunky, limited and outdated, the KTX format is great and flexible but too complicated to parse quickly. This format is not meant to be an all-encompassing, highly flexible format for data exchange but rather a format optimized for asset loading in game engines.
 
+**Format version**: 2.0.1
+
 **Format stability: 🧪 WIP - UNSTABLE 🧪**
 
 This repository contains both the spec and the reference C implementation.
