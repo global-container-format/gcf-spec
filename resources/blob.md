@@ -5,8 +5,7 @@ This is a completely generic resource type and the content data consists of an u
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
 Uncompressed size      | uint64     | Uncompressed resource size
-Rsvd                   | uint64     | Reserved
-Rsvd2                  | uint16     | Reserved
+Reserved               | uint64     | Reserved
 
 The supercompression scheme is applied to the entire data blob.
 

@@ -25,7 +25,8 @@ Depth                  | uint16     | Resource depth
 Layer Count            | uint8      | Resource layer count
 Mip Level Count        | uint8      | Number of mip levels
 Flags                  | uint16     | Image flags
-Reserved               | uint64     | Reserved
+Reserved 1             | uint32     | Reserved
+Reserved 2             | uint16     | Reserved
 
 The `Width`, `Height` and `Depth` fields describe the resource dimensions, in pixels.
 `Layer Count` specifies the number of layers in layered images.
