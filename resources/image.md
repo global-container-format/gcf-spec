@@ -15,7 +15,7 @@ The structure of each mip level is the following:
 
 The Mip Level Descriptor contains information about the compressed and uncompressed mip level, while the compressed data is the compressed raw mip level data. The resource format value must not be `VK_FORMAT_UNDEFINED`.
 
-The format for the `Type Data` structure of image resource types is as follows:
+The format for the `Type Info` structure of image resource types is as follows:
 
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
@@ -61,8 +61,8 @@ for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++m
 }
 ```
 
-Images that don't take advantage of layers must have the `Layer Count` type data field set to 1.
-Images that don't take advantage of mip-mapping must have the `Mip Level Count` type data field set to 1.
+Images that don't take advantage of layers must have the `Layer Count` type info field set to 1.
+Images that don't take advantage of mip-mapping must have the `Mip Level Count` type info field set to 1.
 
 Mip levels are stored in oder from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height and depth) must be computed by the following formula:
 

@@ -72,15 +72,15 @@ Format                 | uint32     | Data format
 Size                   | uint32     | Size of content data
 Supercompression Scheme| uint16     | Data supercompression scheme
 Reserved               | uint16     | Reserved
-Type Data              | *          | Type specific data
+Type Info              | *          | Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
-The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/chap43.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type.
+The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/chap43.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type and are informative only.
 `Size` specifies the size, in bytes, of the compressed content data following the descriptor, without taking in account any padding.
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
-`Type Data` is an 16 bytes long structure whose meaning and format depend on the resource type.
+`Type Info` is an 16 bytes long structure whose meaning and format depend on the resource type.
 
-*Any unused bit of `Type Data` must be set to 0*.
+*Any unused bit of `Type Info` must be set to 0*.
 
 Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after** the resource content data to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this latter case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
 
@@ -114,9 +114,9 @@ Scheme # | Name
 When the `None` supercompression scheme is used, no data is compressed and the compressed size of the data equals
 its uncompressed size.
 
-The supercompression scheme range between (0x7000-0xfffe) is available for private use and will not be standardized.
+The supercompression scheme range between (0x7000-0xfffe) is available for private application use.
 
-The supercompression scheme `0xffff` is meant for testing. It can be supported by GCF writers but a conforming GCF reader must always return an error when presented with a resource whose supercompression scheme is `0xffff`.
+The supercompression scheme `0xffff` is meant for testing. It can be supported by GCF writers but a conforming GCF reader deployed in production must always return an error when presented with a resource whose supercompression scheme is `0xffff`.
 
 ## Bugs
 
