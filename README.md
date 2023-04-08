@@ -98,7 +98,7 @@ Type #      | Name                                               | Format
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
 
-The resource type range between (0x70000000-0xfffffffe) is available for private use and will not be standardized. When reading resource descriptors, any resource that has an unknown descriptor type may be skipped by advancing to the next resource descriptor.
+The resource type range between (0x70000000-0xfffffffe) is available for private application use. When reading resource descriptors, any resource that has an unknown descriptor type may be skipped by advancing to the next resource descriptor.
 
 The resource type `0xffffffff` is meant for testing. It can be supported by GCF writers but a conformig GCF reader must always skip a resource whose resource type is `0xffffffff`.
 
