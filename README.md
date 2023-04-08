@@ -1,7 +1,6 @@
 # GCF - Global Container Format
 
-The Global Container Format (GCF) is a container format for deployment of generic resources. The main purpose
-of the format is to be linear and simple to parse while maintaining an optimized layout. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://github.khronos.org/KTX-Specification) file formats. While the DDS format feels clunky, limited and outdated, the KTX format is great and flexible but too complicated to parse quickly. This format is not meant to be an all-encompassing, highly flexible format for data exchange but rather a format optimized for asset loading in game engines.
+The Global Container Format (GCF) is a container format for deployment of resources. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://github.khronos.org/KTX-Specification) file formats. While the DDS format is extremely simple to parse, it feels clunky, limited and outdated; the KTX format on the other hand is great and flexible but can't be parsed without writing a lot of code. The GCF format attempts to strike a balance between the two.
 
 **Format version**: 2.0.1
 
@@ -18,8 +17,8 @@ The general structure of the format is:
 * Header
 * 1..n Resource
 
-The header is immediately followed by `Resource Count` resources with no gaps in between.
-Any padding or reserved bytes must be set to `0`.
+The header is immediately followed by `Resource Count` resources.
+Within each resource and between any two resources, padding and reserved bytes should be set to `0`.
 
 ## Header
 
@@ -34,12 +33,12 @@ Flags          | uint16  | Container flags
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
 where `##` is a double digit unsigned integer number representing the version.
 
-For GCF version 2, this is equal to the string "GC02".
+For GCF version 2, this is equal to the string "GC02", encoded as 0x32304347.
 
 Files can be stored both as big-endian and little-endian. File endianness can be inferred
 by inspecting the first byte of the file. For little-endian encoded files, the first byte
 will always be 0x47 (the equivalent ASCII character code for the letter "G"). Conforming
-read-only implementations are not obliged to support both byte orders, while read-write
+read-only implementations are not required to support both byte orders, while read-write
 implementations should.
 
 ### Container flags
