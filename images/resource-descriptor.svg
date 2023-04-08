@@ -7,7 +7,7 @@
    viewBox="0 0 57.21467 59.504352"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    sodipodi:docname="resource-descriptor.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -29,8 +29,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4380896"
-     inkscape:cx="110.91103"
-     inkscape:cy="182.53383"
+     inkscape:cx="10.082821"
+     inkscape:cy="182.88151"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="-8"
@@ -44,15 +44,19 @@
      fit-margin-bottom="0"
      showguides="false"
      inkscape:guide-bbox="true"
-     inkscape:snap-text-baseline="true">
+     inkscape:snap-text-baseline="true"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1">
     <sodipodi:guide
        position="28.517287,-32.302919"
        orientation="0,-1"
-       id="guide8452" />
+       id="guide8452"
+       inkscape:locked="false" />
     <sodipodi:guide
        position="34.036763,38.16238"
        orientation="0,-1"
-       id="guide13064" />
+       id="guide13064"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
      id="defs2" />
@@ -133,13 +137,13 @@
         <text
            xml:space="preserve"
            style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
-           x="17.758358"
+           x="28.142567"
            y="38.355572"
            id="text17899"><tspan
              sodipodi:role="line"
              id="tspan17897"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
-             x="17.758358"
+             x="28.142567"
              y="38.355572">Type Info</tspan></text>
       </g>
     </g>
