@@ -41,6 +41,16 @@ will always be 0x47 (the equivalent ASCII character code for the letter "G"). Co
 read-only implementations are not required to support both byte orders, while read-write
 implementations should.
 
+### Magic number computation
+
+The magic number can be computed for any version by the following Python script:
+
+```python
+from struct import unpack
+
+unpack('<I', b'GC02')[0] # Replace "02" with correct version number
+```
+
 ### Container flags
 
 Name           | Bit     | Description
