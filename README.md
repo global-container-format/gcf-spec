@@ -75,14 +75,14 @@ Reserved               | uint16     | Reserved
 Type Info              | *          | Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
-The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://registry.khronos.org/vulkan/specs/1.2-extensions/html/chap47.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type and are informative only.
+The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://registry.khronos.org/vulkan/specs/1.2-extensions/html/chap47.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type and are informational only. Conforming implementations are not required to support all formats and an unknown format value should not generate an error.
 `Size` specifies the size, in bytes, of the compressed content data following the descriptor, without taking in account any padding.
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
-`Type Info` is an 16 bytes long structure whose meaning and format depend on the resource type.
+`Type Info` is a 16 bytes long extension structure whose meaning and format depend on the resource type.
 
 *Any unused bit of `Type Info` must be set to 0*.
 
-Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after** the resource content data to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this latter case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
+Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after** the resource content data to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
 
 ![Resource Descriptor](images/resource-descriptor.svg)
 
@@ -98,9 +98,9 @@ Type #      | Name                                               | Format
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
 
-The resource type range between (0x70000000-0xfffffffe) is available for private application use. When reading resource descriptors, any resource that has an unknown descriptor type may be skipped by advancing to the next resource descriptor.
+The resource type range between (0x70000000-0xfffffffe) is available for private application use. When reading resource descriptors, any resource having an unknown descriptor type may be skipped by advancing to the next resource descriptor.
 
-The resource type `0xffffffff` is meant for testing. It can be supported by GCF writers but a conformig GCF reader must always skip a resource whose resource type is `0xffffffff`.
+The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type.
 
 ### Supercompression Scheme
 
@@ -116,7 +116,7 @@ its uncompressed size.
 
 The supercompression scheme range between (0x7000-0xfffe) is available for private application use.
 
-The supercompression scheme `0xffff` is meant for testing. It can be supported by GCF writers but a conforming GCF reader deployed in production must always return an error when presented with a resource whose supercompression scheme is `0xffff`.
+The supercompression scheme `0xffff` is meant for testing. Applications should return an error when presented with a resource with such supercompression scheme.
 
 ## Bugs
 

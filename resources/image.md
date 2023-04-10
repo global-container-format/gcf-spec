@@ -10,8 +10,8 @@ Each mip level is individually super-compressed but all the layers in the same m
 
 The structure of each mip level is the following:
 
-* Mip Level Descriptor
-* Compressed Data
+1. Mip Level Descriptor
+2. Compressed Data
 
 The Mip Level Descriptor contains information about the compressed and uncompressed mip level, while the compressed data is the compressed raw mip level data. The resource format value must not be `VK_FORMAT_UNDEFINED`.
 
@@ -47,7 +47,7 @@ Image 3D       | 0x0007    | The image is a 3D image
 
 1D images only extend along the `Width` axis. 2D images extend along the `Width` and `Height` axes and 3D images extend along the `Width`, `Height` and `Depth` axes. Whenever not used, `Height` and `Depth` must be set to 1.
 
-1D images are stored one texel after the other in a linear fashion. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of 2D images.
+1D images are stored one pixel after the other. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of image planes.
 
 ## Layers and mip maps
 
@@ -64,7 +64,7 @@ for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++m
 Images that don't take advantage of layers must have the `Layer Count` type info field set to 1.
 Images that don't take advantage of mip-mapping must have the `Mip Level Count` type info field set to 1.
 
-Mip levels are stored in oder from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height and depth) must be computed by the following formula:
+Mip levels are stored in order from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height and depth) must be computed by the following formula:
 
 ```python
 round(max(1, x * 0.5 ** mip_level))
@@ -74,7 +74,7 @@ Where `x` is the dimension to scale and `mip_level` is the mip level number, wit
 
 ### The rounding function
 
-The rounding function used to compute the dimensions of the mip levels returns an integer value that is the value of its only argument rounded to the closest integer. For values equally close to two integers (i.e. 1.5, equally close to both 1 and 2), the closest even integer will be used.
+The rounding function used to compute the dimensions of the mip levels returns an integer value that is the value of its only argument rounded to the closest integer. For values equidistant from two integers (i.e. 1.5, equally distant from both 1 and 2), the closest even integer will be used.
 
 ### Mip Level Descriptor
 
@@ -88,12 +88,12 @@ Layer Stride           | uint32  | The layer stride in bytes
 Reserved               | uint32  | Reserved
 Reserved2              | uint64  | Reserved
 
-The bytes of the strides that act as padding must all be set to 0. `Row Stride` represents the stride of each image row (along the width axis), while `Layer Stride` represents the stride of each 2D image, hence the size of each image in bytes, including any padding. Layer strides apply to all images within the array and must be non-zero for both array and non-array images. `Depth Stride` only applies to 3D images and represents the stride of each voxel layer and must be 1 for non-3D images.
+The bytes within the strides acting as padding must all be set to 0. `Row Stride` represents the stride of each image row (along the width axis), while `Layer Stride` represents the stride of each image, hence the size of each image in bytes, including padding. Layer strides apply to all images within the array and must equal the image depth stride for non-array images. `Depth Stride` applies to 3D images, represents the stride of each voxel layer and must be equal to the row stride for non-3D images.
 
-The relationship between the different strides within the uncompressed mip level data satisfies the following equation, which also encodes how the mip level data must be encoded:
+The relationship between the different strides within the uncompressed mip level data satisfies the following equation, which also encodes how the mip level data must be laid out:
 
 ```
 address(x, y, z, layer) = layer_stride * layer + depth_stride * z + row_stride * y + x * element_size
 ```
 
-Where `element_size` is the texel or voxel size, in bytes, according to the resource format.
+Where `element_size` is the pixel (texel or voxel) size, in bytes, according to the resource format.
