@@ -75,7 +75,7 @@ Reserved               | uint16     | Reserved
 Type Info              | *          | Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
-The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/html/chap43.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type and are informative only.
+The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://registry.khronos.org/vulkan/specs/1.2-extensions/html/chap47.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type and are informative only.
 `Size` specifies the size, in bytes, of the compressed content data following the descriptor, without taking in account any padding.
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 `Type Info` is an 16 bytes long structure whose meaning and format depend on the resource type.
