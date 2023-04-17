@@ -45,9 +45,9 @@ Image 1D       | 0x0001    | The image is a 1D image
 Image 2D       | 0x0003    | The image is a 2D image
 Image 3D       | 0x0007    | The image is a 3D image
 
-1D images only extend along the `Width` axis. 2D images extend along the `Width` and `Height` axes and 3D images extend along the `Width`, `Height` and `Depth` axes. Whenever not used, `Height` and `Depth` must be set to 1.
+1D images only extend along the `Width` axis. 2D images extend along the `Width` and `Height` axes and 3D images extend along the `Width`, `Height` and `Depth` axes. If the image has no depth or no height, `Height` and/or `Depth` must be set to 1 in the type info block.
 
-1D images are stored one pixel after the other. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of image planes.
+1D images are stored pixel after pixel. 2D images are stored as a sequence of rows. 3D images are stored as a sequence of image planes.
 
 ## Layers and mip maps
 
