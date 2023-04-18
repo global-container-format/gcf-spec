@@ -88,7 +88,7 @@ Layer Stride           | uint32  | The layer stride in bytes
 Reserved               | uint32  | Reserved
 Reserved2              | uint64  | Reserved
 
-The bytes within the strides acting as padding must all be set to 0. `Row Stride` represents the stride of each image row (along the width axis), while `Layer Stride` represents the stride of each image, hence the size of each image in bytes, including padding. Layer strides apply to all images within the array and must equal the image depth stride for non-array images. `Depth Stride` applies to 3D images, represents the stride of each voxel layer and must be equal to the row stride times the height of the image. While readers can ignore stride values that don't apply to their image type, writers must still compute and set all the stride values.
+The bytes within the strides acting as padding must all be set to 0. `Row Stride` represents the stride of each image row (along the width axis), while `Layer Stride` represents the stride of each image, hence the size of each image in bytes, including padding. Layer strides apply to all images within the array and must equal the image depth stride times the image depth for non-array images. `Depth Stride` applies to 3D images, represents the stride of each voxel layer and must be equal to the row stride times the height of the image. While readers can ignore stride values that don't apply to their image type, writers must still compute and set all the stride values.
 
 The relationship between the different strides within the uncompressed mip level data satisfies the following equation, which also encodes how the mip level data must be laid out:
 
