@@ -33,11 +33,11 @@ Flags          | uint16  | Container flags
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
 where `##` is a double digit unsigned integer number representing the version.
 
-For GCF version 2, this is equal to the string "GC02", encoded as 0x32304347.
+For GCF version 2, this is equal to the string "GC02", encoded as `0x32304347`.
 
 Files can be stored both as big-endian and little-endian. File endianness can be inferred
 by inspecting the first byte of the file. For little-endian encoded files, the first byte
-will always be 0x47 (the equivalent ASCII character code for the letter "G"). Conforming
+will always be `0x47` (the equivalent ASCII character code for the letter "G"). Conforming
 read-only implementations are not required to support both byte orders, while read-write
 implementations should.
 
@@ -98,7 +98,7 @@ Type #      | Name                                               | Format
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
 
-The resource type range between (0x70000000-0xfffffffe) is available for private application use. When reading resource descriptors, any resource having an unknown descriptor type may be skipped by advancing to the next resource descriptor.
+The resource type range between `(0x70000000-0xfffffffe)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor type may be skipped by advancing to the next resource descriptor.
 
 The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type.
 
@@ -114,7 +114,7 @@ Scheme # | Name
 When the `None` supercompression scheme is used, no data is compressed and the compressed size of the data equals
 its uncompressed size.
 
-The supercompression scheme range between (0x7000-0xfffe) is available for private application use.
+The supercompression scheme range between `(0x7000-0xfffe)` is available for private application use.
 
 The supercompression scheme `0xffff` is meant for testing. Applications should return an error when presented with a resource with such supercompression scheme.
 
