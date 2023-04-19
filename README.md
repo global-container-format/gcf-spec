@@ -8,6 +8,17 @@ The Global Container Format (GCF) is a container format for deployment of resour
 
 This repository contains both the spec and the reference C implementation.
 
+## Vocabulary
+
+|Name|Meaning
+|----|----
+|Implementation|Unless otherwise stated, this word refers to a piece of software intended to read and/or write GCF files.
+|Reader|A piece of software intended to read GCF files.
+|Writer|A piece of software intended to write GCF files.
+|Container|The data, including any metadata, stored in a GCF file. A container is a collection of resources.
+|Resource|An indivisible unit of data, along with its metadata, within the container.
+|Type Info|A portion of resource metadata that is specific for a given resource type.
+
 ## Container
 
 ![Container](images/container.svg)
@@ -75,9 +86,13 @@ Reserved               | uint16     | Reserved
 Type Info              | *          | Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
-The `Format` field is an enumeration with the same values and meanings as [`VkFormat`](https://registry.khronos.org/vulkan/specs/1.2-extensions/html/chap47.html#VkFormat) specifying the format of the data. Valid values for this field depend on the resource type and are informational only. Conforming implementations are not required to support all formats and an unknown format value should not generate an error.
+
+The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value should not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
+
 `Size` specifies the size, in bytes, of the compressed content data following the descriptor, without taking in account any padding.
+
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
+
 `Type Info` is a 16 bytes long extension structure whose meaning and format depend on the resource type.
 
 *Any unused bit of `Type Info` must be set to 0*.
