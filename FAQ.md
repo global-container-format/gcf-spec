@@ -5,9 +5,17 @@
 Security. It's a hint to application developers not to trust these values for memory allocation, unless they can verify their GCF files
 were not tampered with.
 
-**Is the code shown to compute the magic number the same regardless of endianness?**
+**How is the magic number computed for a given version?**
 
-Yes. The magic number is always computed with little-endian-based code. This way you can use it
+The magic number can be computed for any version by the following Python script:
+
+```python
+from struct import unpack
+
+unpack('<I', b'GC02')[0] # Replace "02" with correct version number
+```
+
+The magic number is always computed with little-endian-based code. This way you can use it
 to identify endianness of each file by checking whether the first byte is a "G" ASCII character.
 
 **Is the GCF format specific for Vulkan?**

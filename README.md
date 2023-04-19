@@ -21,15 +21,15 @@ This repository contains both the spec and the reference C implementation.
 
 ## Container
 
-![Container](images/container.svg)
-
 The general structure of the format is:
 
 * Header
 * 1..n Resource
 
 The header is immediately followed by `Resource Count` resources.
-Within each resource and between any two resources, padding and reserved bytes should be set to `0`.
+Within each resource and between any two consecutive resources, padding and reserved bytes should be set to `0`.
+
+![Container](images/container.svg)
 
 ## Header
 
@@ -42,25 +42,15 @@ Resource Count | uint16  | Number of resources following the header
 Flags          | uint16  | Container flags
 
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
-where `##` is a double digit unsigned integer number representing the version.
+where `##` is a double digit unsigned integer representing the version.
 
 For GCF version 2, this is equal to the string "GC02", encoded as `0x32304347`.
 
-Files can be stored both as big-endian and little-endian. File endianness can be inferred
+Files can be stored both as big-endian and little-endian. File endianness can be determined
 by inspecting the first byte of the file. For little-endian encoded files, the first byte
 will always be `0x47` (the equivalent ASCII character code for the letter "G"). Conforming
 read-only implementations are not required to support both byte orders, while read-write
 implementations should.
-
-### Magic number computation
-
-The magic number can be computed for any version by the following Python script:
-
-```python
-from struct import unpack
-
-unpack('<I', b'GC02')[0] # Replace "02" with correct version number
-```
 
 ### Container flags
 
@@ -87,9 +77,9 @@ Type Info              | *          | Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
-The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value should not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
+The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value must not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
-`Size` specifies the size, in bytes, of the compressed content data following the descriptor, without taking in account any padding.
+`Size` specifies the size, in bytes, of the compressed content data following the descriptor, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
@@ -111,7 +101,7 @@ Type #      | Name                                               | Format
 1           | [Image](resources/image.md)                        | ✅
 0xffffffff  | Test                                               | ✅
 
-In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
+In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `FORMAT_UNDEFINED (0)`.
 
 The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be ignored.
 
@@ -131,7 +121,7 @@ its uncompressed size.
 
 The supercompression scheme range between `[0x7000-0xffff)` is available for private application use.
 
-The supercompression scheme `0xffff` is meant for testing. Applications should return an error when presented with a resource with such supercompression scheme. Reader implementations may support only a subset of supercompression schemes but writer implementations should support all.
+The supercompression scheme `0xffff` is meant for testing. Reader implementations may support only a subset of supercompression schemes but writer implementations should support all.
 
 ## Bugs
 
