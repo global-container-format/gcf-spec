@@ -98,7 +98,7 @@ Type #      | Name                                               | Format
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `VK_FORMAT_UNDEFINED`.
 
-The resource type range between `(0x70000000-0xfffffffe)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor type may be skipped by advancing to the next resource descriptor.
+The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor type may be skipped by advancing to the next resource descriptor.
 
 The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type.
 
@@ -114,7 +114,7 @@ Scheme # | Name
 When the `None` supercompression scheme is used, no data is compressed and the compressed size of the data equals
 its uncompressed size.
 
-The supercompression scheme range between `(0x7000-0xfffe)` is available for private application use.
+The supercompression scheme range between `[0x7000-0xffff)` is available for private application use.
 
 The supercompression scheme `0xffff` is meant for testing. Applications should return an error when presented with a resource with such supercompression scheme.
 
