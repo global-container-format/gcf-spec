@@ -120,4 +120,5 @@ The supercompression scheme `0xffff` is meant for testing. Applications should r
 
 ## Bugs
 
-File any issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec).
+File any issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so,
+read the [FAQ](FAQ.md) to see if your question was already answered.
