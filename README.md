@@ -1,6 +1,6 @@
 # GCF - Global Container Format
 
-The Global Container Format (GCF) is a container format for deployment and exchange of media resources. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://www.khronos.org/ktx/) file formats. The GCF format attempts to strike a balance between the two in terms of speed of development and flexibility.
+The Global Container Format (GCF) is a container format for deployment and exchange of media resources especially meant for real-time applications. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://www.khronos.org/ktx/) file formats. The GCF format attempts to strike a balance between the two in terms of speed of development and flexibility.
 
 **Format version**: 2.0.1
 
@@ -73,13 +73,13 @@ Format                 | uint32     | Data format
 Size                   | uint32     | Size of content data
 Supercompression Scheme| uint16     | Data supercompression scheme
 Reserved               | uint16     | Reserved
-Type Info              | *          | Resource-type-specific info
+Type Info              | uint8\[16\]| Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
 The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value must not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
-`Size` specifies the size, in bytes, of the compressed content data following the descriptor, without accounting for padding.
+`Size` specifies the size, in bytes, of the supercompressed content data following the descriptor, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
@@ -105,7 +105,7 @@ In the table above, the `Format` column specifies whether the format field is me
 
 The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be ignored.
 
-The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type. Reader implementations may support only a subset of resource types but writer implementations should support all.
+The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type. Implementations may support only a subset of resource types.
 
 ### Supercompression Scheme
 
