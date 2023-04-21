@@ -1,6 +1,6 @@
 # GCF - Global Container Format
 
-The Global Container Format (GCF) is a container format for deployment of resources. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://www.khronos.org/ktx/) file formats. While the DDS format is extremely simple to parse, it feels clunky, limited and outdated; the KTX format on the other hand is great and flexible but can't be parsed without writing a lot of code. The GCF format attempts to strike a balance between the two.
+The Global Container Format (GCF) is a container format for deployment and exchange of media resources. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://www.khronos.org/ktx/) file formats. The GCF format attempts to strike a balance between the two in terms of speed of development and flexibility.
 
 **Format version**: 2.0.1
 
