@@ -128,4 +128,4 @@ The supercompression scheme `0xffff` is meant for testing. Reader implementation
 File an issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so,
 read the [FAQ](FAQ.md) to see if your question was already answered.
 
-If you are interested in upcoming features, check the [roadma](./roadmap.md).
+If you are interested in upcoming features, check the [roadmap](./roadmap.md).
