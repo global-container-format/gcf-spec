@@ -93,7 +93,7 @@ Resource descriptor structures must be aligned on a 64 bits boundary. Padding mu
 
 ### Resource Types
 
-The following resource types are standardized:
+The following resource types are specified:
 
 Type #      | Name                                               | Format
 -----------:|----------------------------------------------------|:------:
