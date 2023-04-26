@@ -67,8 +67,8 @@ for(uint32_t mip_level = 0; mip_level < resource_descriptor.mip_level_count; ++m
 }
 ```
 
-Textures that don't take advantage of layers must have the `Layer Count` type info field set to 1.
-Textures that don't take advantage of mip-mapping must have the `Mip Level Count` type info field set to 1.
+Textures that don't take advantage of layers must have the `Layer Count` extended descriptor field set to 1.
+Textures that don't take advantage of mip-mapping must have the `Mip Level Count` extended descriptor field set to 1.
 
 Mip levels are stored in order from the base (largest) level to the n-th (smallest) one. Each level dimension (width, height or depth) must be computed by the following formula:
 
