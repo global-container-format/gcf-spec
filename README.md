@@ -64,7 +64,7 @@ The `Unpadded` flag, when enabled, requires no padding to be present between any
 
 ## Resources
 
-Each resource consists of a 256 bits descriptor and some associated content data. The resource descriptor has the following structure:
+Each resource consists of a 128 bits descriptor and some associated content data. The resource descriptor has the following structure:
 
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
@@ -73,7 +73,6 @@ Format                 | uint32     | Data format
 Size                   | uint32     | Size of content data
 Supercompression Scheme| uint16     | Data supercompression scheme
 Reserved               | uint16     | Reserved
-Type Info              | uint8\[16\]| Resource-type-specific info
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
@@ -82,10 +81,6 @@ The `Format` field is an enumeration specifying how to interpret the resource da
 `Size` specifies the size, in bytes, of the supercompressed content data following the descriptor, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
-
-`Type Info` is a 16 bytes long extension structure whose meaning and format depend on the resource type.
-
-*Any unused bit of `Type Info` must be set to 0*.
 
 Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after** the resource content data to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
 

@@ -19,9 +19,9 @@ The format for the `Type Info` structure of image resource types is as follows:
 
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
-Width                  | uint16     | Resource width
-Height                 | uint16     | Resource height
-Depth                  | uint16     | Resource depth
+Width                  | uint16     | Base level width
+Height                 | uint16     | Base level height
+Depth                  | uint16     | Base level depth
 Layer Count            | uint8      | Resource layer count
 Mip Level Count        | uint8      | Number of mip levels
 Flags                  | uint16     | Image flags
