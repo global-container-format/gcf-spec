@@ -88,7 +88,7 @@ Resource descriptor structures must be aligned on a 64 bits boundary. Padding mu
 
 ### Resource Types
 
-The following resource types are standardized:
+The following resource types are specified:
 
 Type #      | Name                                               | Format
 -----------:|----------------------------------------------------|:------:
@@ -118,7 +118,9 @@ The supercompression scheme range between `[0x7000-0xffff)` is available for pri
 
 The supercompression scheme `0xffff` is meant for testing. Reader implementations may support only a subset of supercompression schemes but writer implementations should support all.
 
-## Bugs
+## Bugs, Feedback and Further Information
 
-File any issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so,
+File an issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so,
 read the [FAQ](FAQ.md) to see if your question was already answered.
+
+If you are interested in upcoming features, check the [roadmap](./roadmap.md).

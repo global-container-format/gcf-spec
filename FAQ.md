@@ -2,8 +2,7 @@
 
 **Why are decompressed sizes only a hint?**
 
-Security. It's a hint to application developers not to trust these values for memory allocation, unless they can verify their GCF files
-were not tampered with.
+Security. It's a hint to application developers not to trust these values for memory allocation, unless they can verify their GCF files were not tampered with.
 
 **How is the magic number computed for a given version?**
 
@@ -26,21 +25,16 @@ adopt their convention instead of inventing a new one. GCF readers and writers d
 **Why support multiple resources?**
 
 Multiple resources can be useful for some use cases. You may want to have the fastest loading time of related resources, so you
-can put them sequentially in the same file - ex. a 3D model and its textures or a set or related textures. Another use case would be
-storing multiple versions of the same resource, each with different quality. You don't have to support multiple resources in your
-application but if you need it, it's there.
+can put them sequentially in the same file - ex. a 3D model and its textures or a set or related textures. Another use case would be storing multiple versions of the same resource, each with different quality. You don't have to support multiple resources in your application but if you need it, it's there.
 
 **Why include a blob resource type?**
 
-While the blob provides little value in a single-resource scenario, it can be useful to embed custom resources such as extra metadata or
-license files. In some cases it could even be used to include the original file used to create the resource.
+While the blob provides little value in a single-resource scenario, it can be useful to embed custom resources such as extra metadata, license files or the original file used to create the resource.
 
 **Why doesn't GCF support data formats such as scalars or vectors?**
 
-These can be expressed using existing formats. For example a sequence of normalised 3D vectors with each entry being 8-bits wide,
-could be stored with format `B8G8R8_SNORM`. For anything more specific to your use case, a range is allocated for application formats.
+These can be expressed using existing formats. For example a sequence of normalised 3D vectors with each entry being 8-bits wide, could be stored with format `B8G8R8_SNORM`. For anything more specific to your use case, a range is allocated for application formats.
 
-**Why is the format so lax in terms of what implementations must include?**
+**Why is the spec so lax in terms of what implementations must include?**
 
-The main goals of GCF are flexibility and development speed. For example, forcing an implementation to support ZLIB supercompression
-when they only need Deflate is not necessary.
+The main goals of GCF are flexibility and development speed. For example, forcing an implementation to support ZLIB supercompression when they only need Deflate is not necessary.
