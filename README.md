@@ -43,7 +43,7 @@ Flags          | uint16  | Container flags
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
 where `##` is a double digit unsigned integer representing the version.
 
-For GCF version 2, this is equal to the string "GC02", encoded as `0x32304347`.
+For GCF version 3, this is equal to the string "GC03", encoded as `'0x33304347`.
 
 Files can be stored both as big-endian and little-endian. File endianness can be determined
 by inspecting the first byte of the file. For little-endian encoded files, the first byte

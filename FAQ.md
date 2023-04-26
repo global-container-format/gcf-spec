@@ -11,7 +11,7 @@ The magic number can be computed for any version by the following Python script:
 ```python
 from struct import unpack
 
-unpack('<I', b'GC02')[0] # Replace "02" with correct version number
+unpack('<I', b'GC03')[0] # Replace "03" with correct version number
 ```
 
 The magic number is always computed with little-endian-based code. This way you can use it
