@@ -17,7 +17,6 @@ This repository contains both the spec and the reference C implementation.
 |Writer|A piece of software intended to write GCF files.
 |Container|The data, including any metadata, stored in a GCF file. A container is a collection of resources.
 |Resource|An indivisible unit of data, along with its metadata, within the container.
-|Type Info|A portion of resource metadata that is specific for a given resource type.
 
 ## Container
 
@@ -64,15 +63,15 @@ The `Unpadded` flag, when enabled, requires no padding to be present between any
 
 ## Resources
 
-Each resource consists of a 128 bits descriptor and some associated content data. The resource descriptor has the following structure:
+Each resource consists of a descriptor and some associated content data. The resource descriptor has the following structure:
 
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
 Type                   | uint32     | Type of resource contained
 Format                 | uint32     | Data format
 Size                   | uint32     | Size of content data
+Extension Size         | uint16     | Size of the extra fields
 Supercompression Scheme| uint16     | Data supercompression scheme
-Reserved               | uint16     | Reserved
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
@@ -82,7 +81,11 @@ The `Format` field is an enumeration specifying how to interpret the resource da
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
-Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after** the resource content data to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
+This is known as the *common descriptor*. When required, resources may extend their descriptor by appending further fields, generating a *composite descriptor* made of the common descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor.
+
+Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after the resource content data** to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between the resource content data and the next resource descriptor header. In any case the last resource does not require any padding.
+
+In all instances, a resource must be skippable even if its type is unknown by advancing `Size + ExtensionSize` bytes past the end of the common descriptor and, if padding is enabled, aligning the location to a 64 bits boundary.
 
 ![Resource Descriptor](images/resource-descriptor.svg)
 

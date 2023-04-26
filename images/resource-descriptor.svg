@@ -29,14 +29,14 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.4380896"
-     inkscape:cx="10.082821"
+     inkscape:cx="-8.6920871"
      inkscape:cy="182.88151"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
+     inkscape:window-height="1057"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g20842"
      showborder="false"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -116,14 +116,14 @@
         <text
            xml:space="preserve"
            style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
-           x="22.510351"
+           x="28.589912"
            y="27.677284"
            id="text15887"><tspan
              sodipodi:role="line"
              id="tspan15885"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
-             x="22.510351"
-             y="27.677284">Common part</tspan></text>
+             x="28.589912"
+             y="27.677284">Common</tspan></text>
       </g>
       <g
          id="g20842">
@@ -137,14 +137,14 @@
         <text
            xml:space="preserve"
            style="font-style:normal;font-weight:normal;font-size:4.93889px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.183404"
-           x="28.142567"
+           x="14.981438"
            y="38.355572"
            id="text17899"><tspan
              sodipodi:role="line"
              id="tspan17897"
              style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.183404"
-             x="28.142567"
-             y="38.355572">Type Info</tspan></text>
+             x="14.981438"
+             y="38.355572">Extended (optional)</tspan></text>
       </g>
     </g>
   </g>
