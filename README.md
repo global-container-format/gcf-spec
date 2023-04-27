@@ -83,7 +83,7 @@ The `Format` field is an enumeration specifying how to interpret the resource da
 
 The above is known as the *common descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the common descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
-Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after the resource content data** to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between the resource content data and the next resource descriptor, thus ignoring the descriptor alignment requirement. The last resource does not require padding.
+Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after the resource content data** to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between a resource's content data and the next resource descriptor, thus ignoring the descriptor alignment requirement. The last resource does not require padding.
 
 A resource must be skippable even if its type is unknown by advancing `Size + ExtensionSize` bytes past the end of the common descriptor and, if padding is enabled, aligning the new address to a 64 bits boundary.
 
@@ -101,7 +101,7 @@ Type #      | Name                                               | Format
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `FORMAT_UNDEFINED (0)`.
 
-The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be ignored.
+The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be skipped.
 
 The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type. Implementations may support only a subset of resource types.
 
