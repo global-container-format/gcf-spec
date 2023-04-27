@@ -26,7 +26,7 @@ The general structure of the format is:
 * 1..n Resource
 
 The header is immediately followed by `Resource Count` resources.
-Within each resource and between any two consecutive resources, padding and reserved bytes should be set to `0`.
+Within each resource and between any two consecutive resources, padding and reserved bytes must be set to `0`.
 
 ![Container](images/container.svg)
 
