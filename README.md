@@ -81,7 +81,7 @@ The `Format` field is an enumeration specifying how to interpret the resource da
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
-The above is known as the *common descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the common descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor.
+The above is known as the *common descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the common descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
 Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after the resource content data** to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between the resource content data and the next resource descriptor, thus ignoring the descriptor alignment requirement. The last resource does not require padding.
 
