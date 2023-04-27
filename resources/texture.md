@@ -23,13 +23,13 @@ Flags                  | uint16     | Texture flags
 Texture Group          | uint16     | The group this texture belongs to
 Reserved 2             | uint32     | Reserved
 
-The `Base Width`, `Base Height` and `Base Depth` fields describe the resource dimensions, in texels. For mip mapped textures, these dimensions refer to the largest mip level.
+The `Base Width`, `Base Height` and `Base Depth` fields describe the resource dimensions, in texels or voxels. For mip mapped textures, these dimensions refer to the largest mip level.
 `Layer Count` describe the number of layers in each mip level.
 `Mip Level Count` describe the number of mip levels in the texture.
 `Flags` describe the texture flags.
 `Texture Group` represents an application-specific identifier specifying the texture group this texture belongs to.
 
-In a texture resource, each mip level is represented by a collection of `Layer Count` layers of the same type and size. The layers within the same mip level are all supercompressed together.
+In a texture resource, each mip level is represented by a collection of `Layer Count` layers of the same format and size. The layers within the same mip level are all supercompressed together.
 
 ### Flags
 
@@ -43,7 +43,7 @@ Texture 3D     | 0x0007    | The texture is a 3D texture (X, Y and Z axes)
 
 1D textures only extend along the *X* axis (width). 2D textures extend along the *X* and *Y* axes (width and height) and 3D textures extend along the *X*, *Y* and *Z* axes - width, height and depth. If the texture has no depth or no height, `Base Height` and/or `Base Depth` must be set to 1 in the extended descriptor.
 
-1D textures are stored texel after texel. 2D textures are stored as a sequence of 1D rows. 3D textures are stored as a sequence of 2D texture slices.
+1D textures are stored texel after texel. 2D textures are stored as a sequence of 1D rows. 3D textures are stored as a sequence of 2D slices.
 
 ## Layers and mip maps
 
@@ -56,7 +56,7 @@ The structure of a mip level is the following:
 
 The Mip Level Descriptor section contains information about the compressed and uncompressed mip level, while the Compressed Data section contains the compressed raw mip level data.
 
-Textures are made of a sequence of mip layers, each of which is made of a sequence of layers.
+Textures are made of a sequence of mip levels, each of which is made of a sequence of layers.
 
 For example, to iterate across all the layers, one must do so following the order as shown in the pseudo-code below:
 
@@ -89,9 +89,9 @@ Name                   | Format  | Description
 -----------------------|---------|-----------------------------
 Compressed Size        | uint32  | The compressed size of the mip level raw data
 Uncompressed Size      | uint32  | The expected uncompressed size of the mip level raw data
-Row Stride             | uint32  | The row stride in texels
-Slice Stride           | uint32  | The slice stride in texels
-Layer Stride           | uint32  | The layer stride in texels
+Row Stride             | uint32  | The row stride in texels (voxels)
+Slice Stride           | uint32  | The slice stride in texels (voxels)
+Layer Stride           | uint32  | The layer stride in texels (voxels)
 Reserved               | uint32  | Reserved
 
 The bytes within the strides acting as padding must all be set to 0. `Row Stride` represents the stride of each texel row (along the width axis), while `Layer Stride` represents the stride of each texture layer. Layer strides apply to all layers within the mip level and must equal the level's slice stride times the its depth for non-array textures. `Slice Stride` applies to 3D textures, represents the stride of each voxel slice and must be equal to the row stride times the height of the mip level for non-3D textures. While readers can ignore stride values that don't apply to their texture type, writers must still set all of them.
