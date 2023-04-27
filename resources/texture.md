@@ -21,7 +21,7 @@ Layer Count            | uint8      | Resource layer count
 Mip Level Count        | uint8      | Number of mip levels
 Flags                  | uint16     | Texture flags
 Texture Group          | uint16     | The group this texture belongs to
-Reserved 2             | uint32     | Reserved
+Reserved               | uint32     | Reserved
 
 The `Base Width`, `Base Height` and `Base Depth` fields describe the resource dimensions, in texels or voxels. For mip mapped textures, these dimensions refer to the largest mip level.
 `Layer Count` describe the number of layers in each mip level.
