@@ -85,7 +85,7 @@ The above is known as the *common descriptor* and is the same for every resource
 
 Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after the resource content data** to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between a resource's content data and the next resource descriptor, thus ignoring the descriptor alignment requirement. The last resource does not require padding.
 
-A resource must be skippable even if its type is unknown by advancing `Size + ExtensionSize` bytes past the end of the common descriptor and, if padding is enabled, aligning the new address to a 64 bits boundary.
+A resource must be skippable even if its type is unknown by advancing `Content Size + ExtensionSize` bytes past the end of the common descriptor and, if padding is enabled, aligning the new address to a 64 bits boundary.
 
 ![Resource Descriptor](images/resource-descriptor.svg)
 
