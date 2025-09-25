@@ -59,8 +59,6 @@ Resource alignment is expressed as the formula
 
 Where `x` is the exponent term and `^` represents the power operator. Alignment values greater than 1 require inserting padding in between two resources and before the first resource so that each resource start offset is aligned to the given value. The "resource start offset" indicates the offset from the start of the GCF file.
 
-![Padded vs unpadded](images/padding.svg)
-
 ## Resources
 
 Each resource consists of a descriptor and some associated content data. The resource descriptor has the following structure:
