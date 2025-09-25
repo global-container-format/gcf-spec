@@ -23,10 +23,12 @@ This repository contains both the spec and the reference C implementation.
 The general structure of the format is:
 
 * Header
+* 1..n Resource Descriptor
 * 1..n Resource
 
-The header is immediately followed by `Resource Count` resources.
-Within each resource and between any two consecutive resources, padding and reserved bytes must be set to `0`.
+The header is immediately followed by `Resource Count` resource descriptors, then `Resource Count` resources.
+
+Any padding and reserved bytes must be set to `0`.
 
 ![Container](images/container.svg)
 
@@ -55,7 +57,7 @@ Resource alignment is expressed as the formula
 
     alignment = 2 ^ x
 
-Where `x` is the exponent term and `^` represents the power operator. Alignment values greater than 1 require inserting padding in between two resources and before the first resource so that each resource start offset is aligned to the given value. In this context the "resource start offset" indicates the offset from the start of the GCF file, to the first byte of the common descriptor of the given resource.
+Where `x` is the exponent term and `^` represents the power operator. Alignment values greater than 1 require inserting padding in between two resources and before the first resource so that each resource start offset is aligned to the given value. The "resource start offset" indicates the offset from the start of the GCF file.
 
 ![Padded vs unpadded](images/padding.svg)
 
@@ -75,15 +77,13 @@ The `Type` field is an enumeration specifying the type of resource this descript
 
 The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value must not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
-`Content Size` specifies the size, in bytes, of the supercompressed content data following the descriptor, without accounting for padding since this is not part of the resource.
+`Content Size` specifies the size, in bytes, of the supercompressed content data following the descriptor, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
-The above is known as the *common descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the common descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
+The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
-Resource descriptor structures must be aligned according to the boundary indicated in the GCF header. Padding must be added **after the resource content data** to ensure the next resource descriptor is aligned as described in the [Alignment](#Alignment) section of this document. The last resource does not require padding.
-
-A resource must be skippable even if its type is unknown by advancing `Content Size + ExtensionSize` bytes past the end of the common descriptor and aligning the new address as described in the [Alignment](#Alignment) section of this document.
+Resource descriptor structures must be aligned to 8 bytes by adding reserved fields as necessary.
 
 ![Resource Descriptor](images/resource-descriptor.svg)
 

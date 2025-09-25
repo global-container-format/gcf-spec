@@ -2,12 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="57.214672mm"
-   height="64.549881mm"
-   viewBox="0 0 57.214672 64.549881"
+   width="43.601383mm"
+   height="6.8454027mm"
+   viewBox="0 0 43.601383 6.8454026"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
    sodipodi:docname="container.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -29,8 +29,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="0.7500982"
-     inkscape:cx="-157.97931"
-     inkscape:cy="443.27529"
+     inkscape:cx="-191.97486"
+     inkscape:cy="360.61945"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="-8"
@@ -41,14 +41,16 @@
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="2"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-11.640143,-31.393112)">
+     transform="translate(-20.608589,-52.850052)">
     <g
        id="g6544"
        transform="matrix(0.69318182,0,0,0.69318182,3.5714074,9.6319776)">
@@ -75,7 +77,7 @@
        id="g6552"
        transform="matrix(0.69318182,0,0,0.69318182,3.5714074,9.6319776)">
       <rect
-         style="fill:#80b3ff;stroke:none;stroke-width:1.1855"
+         style="fill:#ffb380;stroke:none;stroke-width:1.1855"
          id="rect4894"
          width="82.5392"
          height="23.280285"
@@ -84,20 +86,20 @@
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="23.544704"
+         x="20.426041"
          y="70.093658"
          id="text4898"><tspan
            sodipodi:role="line"
            id="tspan4896"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
-           x="23.544704"
-           y="70.093658">Resource 1</tspan></text>
+           x="20.426041"
+           y="70.093658">Descriptor 1</tspan></text>
     </g>
     <g
        id="g7839"
        transform="matrix(0.69318182,0,0,0.69318182,3.5714074,9.6319776)">
       <rect
-         style="fill:#87de87;stroke:none;stroke-width:1.1855"
+         style="fill:#ff8080;stroke:none;stroke-width:1.1855"
          id="rect6554"
          width="82.5392"
          height="23.280285"
@@ -106,20 +108,20 @@
       <text
          xml:space="preserve"
          style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
-         x="23.544704"
+         x="20.206415"
          y="93.373947"
          id="text6558"><tspan
            sodipodi:role="line"
            id="tspan6556"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
-           x="23.544704"
-           y="93.373947">Resource 2</tspan></text>
+           x="20.206415"
+           y="93.373947">Descriptor 2</tspan></text>
     </g>
     <g
        id="g7322"
        transform="matrix(0.69318182,0,0,0.69318182,3.5714074,41.906918)">
       <rect
-         style="fill:#80b3ff;stroke:none;stroke-width:1.1855"
+         style="fill:#ffb380;stroke:none;stroke-width:1.1855"
          id="rect7316"
          width="82.5392"
          height="23.280285"
@@ -133,6 +135,72 @@
          id="text7320"><tspan
            sodipodi:role="line"
            id="tspan7318"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="47.134918"
+           y="67.049927">...</tspan></text>
+    </g>
+    <g
+       id="g1"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,58.044388)">
+      <rect
+         style="fill:#80b3ff;stroke:none;stroke-width:1.1855"
+         id="rect1"
+         width="82.5392"
+         height="23.280285"
+         x="11.640142"
+         y="54.673397" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="23.544704"
+         y="70.093658"
+         id="text1"><tspan
+           sodipodi:role="line"
+           id="tspan1"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="23.544704"
+           y="70.093658">Resource 1</tspan></text>
+    </g>
+    <g
+       id="g2"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,58.044388)">
+      <rect
+         style="fill:#87de87;stroke:none;stroke-width:1.1855"
+         id="rect2"
+         width="82.5392"
+         height="23.280285"
+         x="11.640142"
+         y="77.953682" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="23.544704"
+         y="93.373947"
+         id="text2"><tspan
+           sodipodi:role="line"
+           id="tspan2"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
+           x="23.544704"
+           y="93.373947">Resource 2</tspan></text>
+    </g>
+    <g
+       id="g3"
+       transform="matrix(0.69318182,0,0,0.69318182,3.5714074,90.319329)">
+      <rect
+         style="fill:#80b3ff;stroke:none;stroke-width:1.1855"
+         id="rect3"
+         width="82.5392"
+         height="23.280285"
+         x="11.640142"
+         y="54.673397" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="47.134918"
+         y="67.049927"
+         id="text3"><tspan
+           sodipodi:role="line"
+           id="tspan3"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Verdana;-inkscape-font-specification:Verdana;stroke-width:0.264583"
            x="47.134918"
            y="67.049927">...</tspan></text>
