@@ -12,38 +12,33 @@ Vertex stride            | uint32     | Stride of an individual vertex data elem
 Vertex count             | uint32     | Number of vertices stored in the vertex data
 Index count              | uint32     | Number of indices stored in the index data
 Flags                    | uint32     | Geometry flags
-Vertex description       | uint16     | Resource index of the vertex description
-Vertex group description | uint16     | Resource index of the vertex group description
 Level of detail          | uint8      | Level of detail of this geometry resource
 Topology                 | uint8      | Indicates the topology of the geometry data
 Reserved                 | uint16     | Reserved, must be 0
 
 Each geometry resource data consists of vertex data, immediately followed by index data. The `Level of detail` indicates the LOD of the given resource. This allows packing multiple LODs in the same GCF file.
 
-The vertex stride indicates the stride of a single vertex element in the vertex data. The vertex data is made of `Vertex count` items of `Vertex stride` stride. It is followed by `Index count` vertex indices, where each index is represented as a 32 bits unsigned integer.
-
-The vertex description field indicates the index of a resource within the GCF file containing the vertex description. It can be set to `0xFFFF` to indicate no vertex description is associated with this resource.
-
-The vertex group description field indicates the index of a resource within the GCF file containing the vertex groups. It can be set to `0xFFFF` to indicate no vertex group description is associated with this resource.
+The vertex stride indicates the stride of a single vertex element in the vertex data. The vertex data is made of `Vertex count` items of `Vertex stride` stride. It is followed by `Index count` vertex indices, where each index is represented as an unsigned integer (see [Flags](#Flags)).
 
 ### Flags
 
 The following resource descriptor flags are available:
 
-Name           | Value     | Description
----------------|----------:|------------------------------------------
+Name           | Value      | Description
+---------------|-----------:|------------------------------------------
+Index 16 bits  | 0x00000001 | When set, indices are 16 bits unsigned integers, when unset indices are 32 bits integers
+Compressed     | 0x00000002 | When set the mesh data is compressed
 
 ### Topology
 
 The following topologies are supported:
 
-Name           | Value     | Description
----------------|----------:|------------------------------------------
-Point List     | 0         | 
-Line List      | 1         | 
-Line Strip     | 2         | 
-Triangle List  | 3         | 
-Triangle Strip | 4         | 
-Triangle Fan   | 5         | 
-Patch List     | 6         | 
+Name           | Value     
+---------------|----------:
+Point List     | 0
+Line List      | 1
+Line Strip     | 2
+Triangle List  | 3
+Triangle Strip | 4
+Triangle Fan   | 5
 
