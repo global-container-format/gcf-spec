@@ -2,7 +2,7 @@
 
 The Global Container Format (GCF) is a container format for deployment and exchange of media resources especially meant for real-time applications. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://www.khronos.org/ktx/) file formats. The GCF format attempts to strike a balance between the two in terms of speed of development and flexibility.
 
-**Format version**: 3.0.0
+**Format version**: 4.0.0
 
 **Format stability: 🧪 WIP - UNSTABLE 🧪**
 
@@ -38,26 +38,24 @@ Name           | Format  | Description
 ---------------|---------|------------------------------------------
 Magic          | uint32  | Format identifier
 Resource Count | uint16  | Number of resources following the header
-Flags          | uint16  | Container flags
+Alignment      | uint16  | Resource alignment exponent term
 
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
 where `##` is a double digit unsigned integer representing the version.
 
-For GCF version 3, this is equal to the string "GC03", encoded as `0x33304347`.
+For GCF version 4, this is equal to the string "GC04", encoded as `0x34304347`.
 
 Files can be stored both as big-endian and little-endian. File endianness can be determined
 by inspecting the first byte of the file. For little-endian encoded files, the first byte
-will always be `0x47` (the equivalent ASCII character code for the letter "G"). Conforming
-read-only implementations are not required to support both byte orders, while read-write
-implementations should.
+will always be `0x47` (the equivalent ASCII character code for the letter "G").
 
-### Container flags
+### Alignment
 
-Name           | Bit     | Description
----------------|--------:|------------------------------------------
-Unpadded       | 0       | Enabled when there is no padding between resources
+Resource alignment is expressed as the formula
 
-The `Unpadded` flag, when enabled, requires no padding to be present between any two consequent resources.
+    alignment = 2 ^ x
+
+Where `x` is the exponent term and `^` represents the power operator. Alignment values greater than 1 require inserting padding in between two resources and before the first resource so that each resource start offset is aligned to the given value. In this context the "resource start offset" indicates the offset from the start of the GCF file, to the first byte of the common descriptor of the given resource.
 
 ![Padded vs unpadded](images/padding.svg)
 
@@ -83,9 +81,9 @@ The `Format` field is an enumeration specifying how to interpret the resource da
 
 The above is known as the *common descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the common descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
-Resource descriptor structures must be aligned on a 64 bits boundary. Padding must be added **after the resource content data** to ensure the next resource descriptor is properly aligned, unless the `Unpadded` flag is enabled. In this case, no padding must be placed between a resource's content data and the next resource descriptor, thus ignoring the descriptor alignment requirement. The last resource does not require padding.
+Resource descriptor structures must be aligned according to the boundary indicated in the GCF header. Padding must be added **after the resource content data** to ensure the next resource descriptor is aligned as described in the [Alignment](#Alignment) section of this document. The last resource does not require padding.
 
-A resource must be skippable even if its type is unknown by advancing `Content Size + ExtensionSize` bytes past the end of the common descriptor and, if padding is enabled, aligning the new address to a 64 bits boundary.
+A resource must be skippable even if its type is unknown by advancing `Content Size + ExtensionSize` bytes past the end of the common descriptor and aligning the new address as described in the [Alignment](#Alignment) section of this document.
 
 ![Resource Descriptor](images/resource-descriptor.svg)
 
@@ -123,7 +121,6 @@ The supercompression scheme `0xffff` is meant for testing. Reader implementation
 
 ## Bugs, Feedback and Further Information
 
-File an issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so,
-read the [FAQ](FAQ.md) to see if your question was already answered.
+File an issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so, read the [FAQ](FAQ.md) to see if your question was already answered.
 
 If you are interested in upcoming features, check the [roadmap](./roadmap.md).
