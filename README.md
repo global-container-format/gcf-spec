@@ -66,12 +66,16 @@ Each resource consists of a descriptor and some associated content data. The res
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
 Type                   | uint32     | Type of resource contained
+Descriptor Size        | uint32     | Size of the combined descriptor
 Format                 | uint32     | Data format
 Content Size           | uint32     | Size of content data
 Extension Size         | uint16     | Size of the extra fields
 Supercompression Scheme| uint16     | Data supercompression scheme
+Reserved               | uint32     | Reserved
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
+
+The `Descriptor Size` is the size in bytes of both standard and extended descriptors. It is used to iterate across resource descriptors, even when the resource type is unknown.
 
 The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value must not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
@@ -79,7 +83,7 @@ The `Format` field is an enumeration specifying how to interpret the resource da
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
-The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *composite descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
+The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *combined descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
 Resource descriptor structures must be aligned to 8 bytes by adding reserved fields as necessary.
 
