@@ -26,7 +26,7 @@ The general structure of the format is:
 * 1..n Resource Descriptor
 * 1..n Resource
 
-The header is immediately followed by `Resource Count` resource descriptors, then `Resource Count` resources.
+The header is immediately followed by `Resource Count` resource descriptors, then `Resource Count` resources. Header and resource descriptors are all stored as little-endian.
 
 Any padding and reserved bytes must be set to `0`.
 
@@ -39,17 +39,13 @@ The container header consists of the following fields:
 Name           | Format  | Description
 ---------------|---------|------------------------------------------
 Magic          | uint32  | Format identifier
-Resource Count | uint16  | Number of resources following the header
+Resource Count | uint16  | Number of resources contained in the GCF file
 Alignment      | uint16  | Resource alignment exponent term
 
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
 where `##` is a double digit unsigned integer representing the version.
 
 For GCF version 4, this is equal to the string "GC04", encoded as `0x34304347`.
-
-Files can be stored both as big-endian and little-endian. File endianness can be determined
-by inspecting the first byte of the file. For little-endian encoded files, the first byte
-will always be `0x47` (the equivalent ASCII character code for the letter "G").
 
 ### Alignment
 
@@ -66,26 +62,24 @@ Each resource consists of a descriptor and some associated content data. The res
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
 Type                   | uint32     | Type of resource contained
-Descriptor Size        | uint32     | Size of the combined descriptor
 Format                 | uint32     | Data format
 Content Size           | uint32     | Size of content data
 Extension Size         | uint16     | Size of the extra fields
 Supercompression Scheme| uint16     | Data supercompression scheme
-Reserved               | uint32     | Reserved
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
-The `Descriptor Size` is the size in bytes of both standard and extended descriptors. It is used to iterate across resource descriptors, even when the resource type is unknown.
-
 The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value must not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
-`Content Size` specifies the size, in bytes, of the supercompressed content data following the descriptor, without accounting for padding.
+`Content Size` specifies the size, in bytes, of the supercompressed content data indicated by the descriptor, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
 The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *combined descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
 Resource descriptor structures must be aligned to 8 bytes by adding reserved fields as necessary.
+
+Resources are stored in the same order as the descriptors.
 
 ![Resource Descriptor](images/resource-descriptor.svg)
 
