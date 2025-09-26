@@ -26,7 +26,7 @@ The general structure of the format is:
 * 1..n Resource Descriptor
 * 1..n Resource
 
-The header is immediately followed by `Resource Count` resource descriptors, then `Resource Count` resources. Header and resource descriptors are all stored as little-endian.
+The header is immediately followed by `Resource Count` resource descriptors, then `Resource Count` resources. GCF files follow the little-endian convention.
 
 Any padding and reserved bytes must be set to `0`.
 
