@@ -1,4 +1,4 @@
-# Geometry resource
+# Geometry Resource
 
 The geometry resource type holds opaque geometry data. The resource format value must be `FORMAT_UNDEFINED`.
 

@@ -1,4 +1,4 @@
-# Blob resource
+# Blob Resource
 
 The blob type represents a generic raw resource. Its content data is an unstructured sequence of bytes. The extended descriptor of a blob resource contains the expected uncompressed size of the content data.
 

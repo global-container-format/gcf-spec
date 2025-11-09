@@ -1,4 +1,4 @@
-# Texture resource
+# Texture Resource
 
 The texture resource type holds texture content data, supports layers and mip maps. The dimensions in the resource descriptors are expressed in texels for 1D and 2D textures, and in voxels for 3D textures. The representable textures are:
 

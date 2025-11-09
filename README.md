@@ -92,6 +92,7 @@ Type #      | Name                                               | Format
 0           | [Blob](resources/blob.md)                          | ❌
 1           | [Texture](resources/texture.md)                    | ✅
 2           | [Geometry](resources/geometry.md)                  | ❌
+3           | [Volume](resources/volume.md)                      | ❌
 0xffffffff  | Test                                               | ✅
 
 In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `FORMAT_UNDEFINED (0)`.
