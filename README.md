@@ -104,8 +104,13 @@ The following resource types are specified:
 Flag        | Name                 | Description
 -----------:|----------------------|-----------------------------
 0x00000001  | Private              | The resource is private
+0x00008000  | Test                 | Test
 
 A private resource is not part of the main exported data. Private resources should be skipped when loading the GCF file, unless referenced explicitly by another resource. For example, a mesh file could contain bounding volume information as Volume resources. The Geometry resource associated with a convex hull volume, will have its Private flag set to indicate the stream is not part of the primary mesh data.
+
+The test flag is intended for testing purposes only.
+
+Flags from 0x00010000 onwards are available for internal application use.
 
 ### Supercompression Scheme
 
