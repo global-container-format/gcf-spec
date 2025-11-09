@@ -26,7 +26,7 @@ The general structure of the format is:
 
 The header is immediately followed by `Resource Count` resource descriptors, then `Resource Count` resources. GCF files follow the little-endian convention.
 
-Any padding and reserved bytes must be set to `0`.
+Any padding, reserved bytes must be set to `0`. Any flag bits intended for application-specific usage that are not used by the application must be set to 0.
 
 ![Container](images/container.svg)
 
@@ -41,9 +41,11 @@ Resource Count | uint16  | Number of resources contained in the GCF file
 Alignment      | uint16  | Resource alignment exponent term
 
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
-where `##` is a double digit unsigned integer representing the version.
+where `##` is a double digit unsigned integer representing the major version.
 
 For GCF version 4, this is equal to the string "GC04", encoded as `0x34304347`.
+
+GCF major versions are not backwards-compatible and applications should not blindly attempt reading a container with a format version different from the reader's supported one.
 
 ### Alignment
 
@@ -67,13 +69,13 @@ Supercompression Scheme| uint16     | Data supercompression scheme
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
-`Content Size` specifies the size, in bytes, of the supercompressed content data indicated by the descriptor, without accounting for padding.
+`Content Size` specifies the size, in bytes, of the content data indicated by the descriptor as stored on disk, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
 The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *combined descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
-Resource descriptor structures must be aligned to 8 bytes by adding reserved fields as necessary.
+Standard and extended resource descriptor structures must be aligned to 8 bytes by adding reserved fields as necessary.
 
 Resources are stored in the same order as the descriptors.
 
@@ -124,7 +126,7 @@ its uncompressed size.
 
 The supercompression scheme range between `[0x7000-0xffff)` is available for private application use.
 
-The supercompression scheme `0xffff` is meant for testing. Reader implementations may support only a subset of supercompression schemes but writer implementations should support all.
+The supercompression scheme `0xffff` is meant for testing. Reader implementations may support only a subset of supercompression schemes but writer implementations should support all. Applications reading a resource with unknown supercompression scheme, should throw an error.
 
 ## Bugs, Feedback and Further Information
 
