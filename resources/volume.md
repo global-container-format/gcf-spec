@@ -1,6 +1,6 @@
 # Volume Resource
 
-Volume resources represent parametric volumes. These can be used, for example, to store the bounding box structure for a mesh asset. The super-compression scheme for volume resources must be `None`.
+Volume resources represent parametric volumes. These can be used, for example, to store the bounding box structure for a mesh asset. The super-compression scheme for volume resources must be `None`. Orientations are expressed as quaternions.
 
 ## Resource Extended Descriptor
 
@@ -27,7 +27,7 @@ Cylinder               | 5          | Cylinder volume
 Convex Hull            | 6          | Convex hull volume
 Test                   | 0xffff     | Test
 
-Shape values in the range `[0x7000-0xffff)` are available for private application use. Value `0xffff` is intended for testing.
+Shape values in the range `[0x7000-0xffff)` are available for private application use. Shape `0xffff` is intended for testing.
 
 ### AA Box
 
@@ -50,10 +50,10 @@ Width                  | float32
 Height                 | float32
 Depth                  | float32
 Reserved               | float32
-Rotation I             | float32
-Rotation J             | float32
-Rotation K             | float32
-Rotation W             | float32
+Orientation I          | float32
+Orientation J          | float32
+Orientation K          | float32
+Orientation W          | float32
 
 ### Sphere
 
@@ -70,10 +70,10 @@ The parameter data for a frustum is
 
 Name                   | Format
 -----------------------|------------
-Rotation I             | float32
-Rotation J             | float32
-Rotation K             | float32
-Rotation W             | float32
+Orientation I          | float32
+Orientation J          | float32
+Orientation K          | float32
+Orientation W          | float32
 Left Slope             | float32
 Right Slope            | float32
 Top Slope              | float32
@@ -91,10 +91,10 @@ Height                 | float32
 Radius 1               | float32
 Radius 2               | float32
 Reserved               | float32
-Rotation I             | float32
-Rotation J             | float32
-Rotation K             | float32
-Rotation W             | float32
+Orientation I          | float32
+Orientation J          | float32
+Orientation K          | float32
+Orientation W          | float32
 
 ### Cylinder
 
@@ -104,10 +104,10 @@ Name                   | Format
 -----------------------|------------
 Height                 | float32
 Reserved               | float32
-Rotation I             | float32
-Rotation J             | float32
-Rotation K             | float32
-Rotation W             | float32
+Orientation I          | float32
+Orientation J          | float32
+Orientation K          | float32
+Orientation W          | float32
 
 ### Convex Hull
 
