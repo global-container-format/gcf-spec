@@ -1,6 +1,6 @@
 # Volume Resource
 
-Volume resources represent parametric volumes. These can be used, for example, to store the bounding box structure for a mesh asset.
+Volume resources represent parametric volumes. These can be used, for example, to store the bounding box structure for a mesh asset. The super-compression scheme for volume resources must be `None`.
 
 ## Resource Extended Descriptor
 
@@ -17,7 +17,7 @@ Offset Z               | float32    | Position offset
 ## Shape
 
 Name                   | Value      | Description
------------------------|------------|-----------------------------
+-----------------------|-----------:|-----------------------------
 AA Box                 | 0          | Axis aligned box
 Box                    | 1          | A non-axis-aligned box
 Sphere                 | 2          | Spherical volume

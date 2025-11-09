@@ -1,6 +1,8 @@
 # Geometry Resource
 
-The geometry resource type holds opaque geometry data. The resource format value must be `FORMAT_UNDEFINED`.
+The geometry resource type holds opaque geometry data.
+
+The supercompression scheme is applied to the vertex and index data as a single assembly.
 
 ## Resource Extended Descriptor
 

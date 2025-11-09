@@ -6,8 +6,6 @@ The texture resource type holds texture content data, supports layers and mip ma
 * 2D textures
 * 3D textures
 
-The resource format value must not be `FORMAT_UNDEFINED` or a non-color format.
-
 ## Resource Extended Descriptor
 
 The extended descriptor structure of texture resources is the following:
@@ -21,7 +19,11 @@ Layer Count            | uint8      | Resource layer count
 Mip Level Count        | uint8      | Number of mip levels
 Flags                  | uint16     | Texture flags
 Texture Group          | uint16     | The group this texture belongs to
-Reserved               | uint32     | Reserved
+Format                 | uint32     | Resource data format
+
+The format value must not be `FORMAT_UNDEFINED` or a non-color format.
+
+The `Format` field is an enumeration specifying how to interpret the resource data. Supported values are listed in the [format table](../format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
 The `Base Width`, `Base Height` and `Base Depth` fields describe the resource dimensions, in texels or voxels. For mip mapped textures, these dimensions refer to the largest mip level.
 `Layer Count` describe the number of layers in each mip level.

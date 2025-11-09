@@ -62,14 +62,12 @@ Each resource consists of a descriptor and some associated content data. The res
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
 Type                   | uint32     | Type of resource contained
-Format                 | uint32     | Data format
+Flags                  | uint32     | Resource flags
 Content Size           | uint32     | Size of content data
 Extension Size         | uint16     | Size of the extra fields
 Supercompression Scheme| uint16     | Data supercompression scheme
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
-
-The `Format` field is an enumeration specifying how to interpret the resource data. Valid values for this field depend on the resource type and are informational only. Format values are not directly used by reader implementations and an unknown format value must not generate an error. Supported values are listed in the [format table](./format.md). The format range between `[0x70000000-0xffffffff)` is available for private application use. Format `0xffffffff` is meant for testing.
 
 `Content Size` specifies the size, in bytes, of the supercompressed content data indicated by the descriptor, without accounting for padding.
 
@@ -87,19 +85,27 @@ Resources are stored in the same order as the descriptors.
 
 The following resource types are specified:
 
-Type #      | Name                                               | Format
------------:|----------------------------------------------------|:------:
-0           | [Blob](resources/blob.md)                          | ❌
-1           | [Texture](resources/texture.md)                    | ✅
-2           | [Geometry](resources/geometry.md)                  | ❌
-3           | [Volume](resources/volume.md)                      | ❌
-0xffffffff  | Test                                               | ✅
-
-In the table above, the `Format` column specifies whether the format field is meaningful or should be set to `FORMAT_UNDEFINED (0)`.
+Type #      | Name                                               
+-----------:|----------------------------------------------------
+0           | [Blob](resources/blob.md)                          
+1           | [Texture](resources/texture.md)                    
+2           | [Geometry](resources/geometry.md)                  
+3           | [Volume](resources/volume.md)                      
+0xffffffff  | Test                                               
 
 The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be skipped.
 
 The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type. Implementations may support only a subset of resource types.
+
+### Resource Flags
+
+The following resource types are specified:
+
+Flag        | Name                 | Description
+-----------:|----------------------|-----------------------------
+0x00000001  | Private              | The resource is private
+
+A private resource is not part of the main exported data. Private resources should be skipped when loading the GCF file, unless referenced explicitly by another resource. For example, a mesh file could contain bounding volume information as Volume resources. The Geometry resource associated with a convex hull volume, will have its Private flag set to indicate the stream is not part of the primary mesh data.
 
 ### Supercompression Scheme
 
