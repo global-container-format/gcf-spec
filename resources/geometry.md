@@ -27,7 +27,7 @@ The following resource descriptor flags are supported:
 
 Name           | Value      | Description
 ---------------|-----------:|------------------------------------------
-Index 16 bits  | 0x00000001 | When set, indices are 16 bits unsigned integers, when unset indices are 32 bits unsigned integers
+Index 16 bits  | 0x0001     | When set, indices are 16 bits unsigned integers, when unset indices are 32 bits unsigned integers
 
 ### Topology
 
