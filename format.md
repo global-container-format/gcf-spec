@@ -1,6 +1,6 @@
 # Resource Formats
 
-The following is a table of all supported resource formats. This identifies with a subset of the formats supported by the Vulkan API. To better understand the naming rules around it, visit the [VkFormat](https://registry.khronos.org/vulkan/specs/1.2-extensions/html/chap47.html#VkFormat) reference page.
+The following is a table of all supported resource formats. This identifies with a subset of the formats supported by the Vulkan API. To better understand the naming rules around it, visit the [VkFormat](https://docs.vulkan.org/spec/latest/chapters/formats.html) reference page.
 
 |Name|Value|
 |---|---|

@@ -1,12 +1,10 @@
 # GCF - Global Container Format
 
-The Global Container Format (GCF) is a container format for deployment and exchange of media resources especially meant for real-time applications. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. It draws inspiration from both the [DDS](https://docs.microsoft.com/en-us/windows/win32/direct3ddds/dx-graphics-dds-pguide) and [KTX](https://www.khronos.org/ktx/) file formats. The GCF format attempts to strike a balance between the two in terms of speed of development and flexibility.
+The Global Container Format (GCF) is a container format for deployment and exchange of media resources especially meant for real-time applications. Its main purpose is to be linear and simple to parse while maintaining a feature-set oriented towards efficient runtime resource loading. While it can be used as-is, the GCF format is primarily intended as a low level specification to build application-specific formats for higher level constructs. An application can rely on GCF to efficiently store its textures, define more complex resource layouts to accommodate higher-level resource types (3D models, scenes, LODs, etc..) or extend it to support its own proprietary data types, without ever breaking compatibility.
 
 **Format version**: 4.0.0
 
 **Format stability: 🧪 WIP - UNSTABLE 🧪**
-
-This repository contains both the spec and the reference C implementation.
 
 ## Vocabulary
 
@@ -131,5 +129,3 @@ The supercompression scheme `0xffff` is meant for testing. Reader implementation
 ## Bugs, Feedback and Further Information
 
 File an issue on the [GitHub repository](https://github.com/global-container-format/gcf-spec). Before doing so, read the [FAQ](FAQ.md) to see if your question was already answered.
-
-If you are interested in upcoming features, check the [roadmap](./roadmap.md).
