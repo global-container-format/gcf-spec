@@ -27,7 +27,7 @@ Cylinder               | 5          | Cylinder volume
 Convex Hull            | 6          | Convex hull volume
 Test                   | 0xffff     | Test
 
-Shape values in the range `[0x7000-0xfffe)` are available for private application use. Value `0xffff` is intended for testing.
+Shape values in the range `[0x7000-0xffff)` are available for private application use. Value `0xffff` is intended for testing.
 
 ### AA Box
 
