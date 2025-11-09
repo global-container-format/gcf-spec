@@ -9,7 +9,7 @@ The extended descriptor structure of volume resources is the following:
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
 Shape                  | uint16     | The type of volume
-Rsvd1                  | uint16     | Reserved
+Rsvd                   | uint16     | Reserved
 Offset X               | float32    | Position offset
 Offset Y               | float32    | Position offset
 Offset Z               | float32    | Position offset
