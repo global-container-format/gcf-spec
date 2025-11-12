@@ -21,6 +21,8 @@ Each geometry resource data consists of vertex data, immediately followed by ind
 
 The vertex data is made of `Vertex count` items of `Vertex stride` stride. It is followed by `Index count` vertex indices, where each index is represented as an unsigned integer (see [Flags](#Flags)).
 
+Vertex stride must be a power of two.
+
 ### Flags
 
 The following resource descriptor flags are supported:
