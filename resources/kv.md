@@ -45,7 +45,7 @@ Vector 2f                | 4          | 8    | A vector of 2 32-bit floating poi
 Vector 4f                | 5          | 16   | A vector of 4 32-bit floating point numbers
 Vector 8f                | 6          | 32   | A vector of 8 32-bit floating point numbers
 Vector 16f               | 7          | 64   | A vector of 16 32-bit floating point numbers
-Blob                     | 8          | *    | A sequence of bytes.
-Test                     | 0xffff     | 0    | Reserved for testing.
+Blob                     | 8          | *    | A sequence of bytes
+Test                     | 0xffff     | 0    | Reserved for testing
 
 Value types in the range `[0x8000-0xfffe)` are available for the application to use for custom data types. Value `0xffff` is reserved for testing and should not be used.
