@@ -94,6 +94,7 @@ Type #      | Name
 1           | [Texture](resources/texture.md)                    
 2           | [Geometry](resources/geometry.md)                  
 3           | [Volume](resources/volume.md)                      
+4           | [Key-Value Store](resources/kv.md)                      
 0xffff      | Test                                               
 
 The resource type range between `[0x7000-0xffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be skipped.
