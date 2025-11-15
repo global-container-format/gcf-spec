@@ -32,7 +32,7 @@ Key Length `0xffff` is reserved for testing and should not be used. Value size `
 The value type format is:
 
 Name                     | Value      | Size | Description
--------------------------|------------|-----------------------------
+-------------------------|-----------:|-----:|----------------------
 String                   | 0          | *    | A UTF-8 string
 Integer                  | 1          | 8    | A 64 bit signed integer
 Unsigned Integer         | 2          | 8    | A 64 bit unsigned integer
