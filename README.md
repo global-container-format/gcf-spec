@@ -61,12 +61,12 @@ Each resource consists of a descriptor and some associated content data. The res
 
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
-Type                   | uint32     | Type of resource contained
+ID                     | uint16     | Resource identifier
+Type                   | uint16     | Type of resource contained
 Flags                  | uint32     | Resource flags
 Content Size           | uint32     | Size of content data
 Extension Size         | uint16     | Size of the extra fields
 Supercompression Scheme| uint16     | Data supercompression scheme
-ID                     | uint64     | Resource identifier
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
@@ -74,7 +74,7 @@ The `Type` field is an enumeration specifying the type of resource this descript
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
 
-`ID` is an integer resource identifier used to refer to the resource within the GCF file. This allows resources to be position-independent, simpler to refer to and re-organize. IDs are not required to be unique. Any value in the allowed range can be used - this allows, for example, multiple-LODs to share the same ID and to query the resource via ID + LOD level. ID `0xffffffffffffffff` is reserved for testing and must not be used. When resources are not referenced by ID, the field is meaningless.
+`ID` is an integer resource identifier used to refer to the resource within the GCF file. This allows resources to be position-independent, simpler to refer to and re-organize. IDs are not required to be unique. Any value in the allowed range can be used - this allows, for example, multiple-LODs to share the same ID and to query the resource via ID + LOD level. ID `0xffffffff` is reserved for testing and must not be used. When resources are not referenced by ID, the field is meaningless.
 
 The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *combined descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
@@ -94,11 +94,11 @@ Type #      | Name
 1           | [Texture](resources/texture.md)                    
 2           | [Geometry](resources/geometry.md)                  
 3           | [Volume](resources/volume.md)                      
-0xffffffff  | Test                                               
+0xffff      | Test                                               
 
-The resource type range between `[0x70000000-0xffffffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be skipped.
+The resource type range between `[0x7000-0xffff)` is available for private application use. When reading resource descriptors, any resource having an unknown descriptor should be skipped.
 
-The resource type `0xffffffff` is meant for testing. Applications should skip a resource with such type. Implementations may support only a subset of resource types.
+The resource type `0xffff` is meant for testing. Applications should skip a resource with such type. Implementations may support only a subset of resource types.
 
 ### Resource Flags
 
