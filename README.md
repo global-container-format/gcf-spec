@@ -66,12 +66,15 @@ Flags                  | uint32     | Resource flags
 Content Size           | uint32     | Size of content data
 Extension Size         | uint16     | Size of the extra fields
 Supercompression Scheme| uint16     | Data supercompression scheme
+ID                     | uint64     | Resource identifier
 
 The `Type` field is an enumeration specifying the type of resource this descriptor refers to.
 
 `Content Size` specifies the size, in bytes, of the content data indicated by the descriptor as stored on disk, without accounting for padding.
 
 `Supercompression Scheme` defines a compression scheme used within the resource to compress the content data. What part of the content data is compressed, depends on the resource type.
+
+`ID` is an integer resource identifier used to refer to the resource within the GCF file. This allows resources to be position-independent, simpler to refer to and re-organize. IDs are not required to be unique. Any value in the allowed range can be used - this allows, for example, multiple-LODs to share the same ID and to query the resource via ID + LOD level. ID `0xffffffffffffffff` is reserved for testing and must not be used. When resources are not referenced by ID, the field is meaningless.
 
 The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *combined descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
