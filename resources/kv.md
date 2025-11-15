@@ -10,10 +10,12 @@ The extended descriptor structure of KV resources is the following:
 
 Name                     | Format     | Description
 -------------------------|------------|-----------------------------
-Pair count               | uint32     | Number of key-value pairs in the store
+Record count             | uint32     | Number of key-value pairs in the store
 Reserved                 | uint32     | Reserved
 
 The data of a KV resource consists of a sequence of records, where each key is an ASCII string of which each character is 1 byte long, and each value is of an arbitrary data type.
+
+## Record Format
 
 The record format is:
 
@@ -28,6 +30,8 @@ Value                    | uint8[]    | Value data
 String keys and values are not NUL-terminated. Data for key and values must be aligned on a 64-bit boundary.
 
 Key Length `0xffff` is reserved for testing and should not be used. Value size `0xffffffff` is reserved for testing and should not be used. Key length and value size do not include padding. Key length must always be greater than 0. A value size of 0 can be used to indicate a NULL value.
+
+## Value Type
 
 The value type format is:
 
