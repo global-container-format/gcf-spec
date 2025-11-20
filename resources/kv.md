@@ -27,9 +27,10 @@ Value Size               | uint32     | Value size, in bytes
 Key                      | uint8[]    | Key data
 Value                    | uint8[]    | Value data
 
-String keys and values are not NUL-terminated. Data for key and values must be aligned on a 64-bit boundary.
+String keys and values are NUL-terminated. Data for keys and values must be aligned on a 64-bit boundary.
 
-Key Length `0xffff` is reserved for testing and should not be used. Value size `0xffffffff` is reserved for testing and should not be used. Key length and value size do not include padding. Key length must always be greater than 0. A value size of 0 can be used to indicate a NULL value.
+Key Length `0xffff` is reserved for testing and should not be used. Value Size `0xffffffff` is reserved for testing and should not be used. Key Length and Value Size do not include padding. Key Length must always be greater than 0. A Value Size of 0 is used to indicate a NULL value. Key
+Length does not include the NUL-terminator, Value Size does.
 
 ## Value Type
 
