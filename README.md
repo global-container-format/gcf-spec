@@ -15,6 +15,7 @@ The Global Container Format (GCF) is a container format for deployment and excha
 |Writer|A piece of software intended to write GCF files.
 |Container|The data, including any metadata, stored in a GCF file. A container is a collection of resources.
 |Resource|An indivisible unit of data, along with its metadata, within the container.
+|Descriptor Block|The block of data containing all the resource descriptors.
 
 ## Container
 
@@ -34,11 +35,13 @@ Any padding, reserved bytes must be set to `0`. Any flag bits intended for appli
 
 The container header consists of the following fields:
 
-Name           | Format  | Description
----------------|---------|------------------------------------------
-Magic          | uint32  | Format identifier
-Resource Count | uint16  | Number of resources contained in the GCF file
-Alignment      | uint16  | Resource alignment exponent term
+Name                  | Format  | Description
+----------------------|---------|------------------------------------------
+Magic                 | uint32  | Format identifier
+Resource Count        | uint16  | Number of resources contained in the GCF file
+Alignment             | uint16  | Resource alignment exponent term
+Descriptor Block Size | uint32  | Size of the resource descriptor block
+Reserved              | uint32  | Reserved
 
 The format identifier is the string `GC##` encoded as a single 32 bits unsigned integer,
 where `##` is a double digit unsigned integer representing the major version.
@@ -46,6 +49,8 @@ where `##` is a double digit unsigned integer representing the major version.
 For GCF version 4, this is equal to the string "GC04", encoded as `0x34304347`.
 
 GCF major versions are not backwards-compatible and applications should not blindly attempt reading a container with a format version different from the reader's supported one.
+
+The Descriptor Block Size is the size, in bytes, of the descriptor block, including any final padding.
 
 ### Alignment
 
@@ -57,7 +62,7 @@ Where `x` is the exponent term and `^` represents the power operator. Alignment 
 
 ## Resources
 
-Each resource consists of a descriptor and some associated content data. The resource descriptor has the following structure:
+Each resource consists of a descriptor and some associated content data. Descriptors are collected in the descriptor block, and resources' data follows. The resource descriptor has the following structure:
 
 Name                   | Format     | Description
 -----------------------|------------|-----------------------------
