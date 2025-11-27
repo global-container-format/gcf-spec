@@ -50,7 +50,7 @@ For GCF version 4, this is equal to the string "GC04", encoded as `0x34304347`.
 
 GCF major versions are not backwards-compatible and applications should not blindly attempt reading a container with a format version different from the reader's supported one.
 
-The Descriptor Block Size is the size, in bytes, of the descriptor block, including any final padding.
+The Descriptor Block Size is the size, in bytes, of the descriptor block, excluding any padding.
 
 ### Alignment
 
