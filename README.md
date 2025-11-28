@@ -86,7 +86,7 @@ The `Type` field is an enumeration specifying the type of resource this descript
 
 The above is known as the *standard descriptor* and is the same for every resource type. When needed, resources may extend their descriptor by appending extra fields, generating a *combined descriptor* made of the standard descriptor as specified above, followed by the *extended descriptor*. When this happens, `Extension Size` is the size, in bytes of the extended descriptor. If a resource has no extended descriptor, `Extension Size` must be 0.
 
-Standard and extended resource descriptor structures must be aligned to 8 bytes by adding reserved fields as necessary.
+Standard and extended resource descriptor structures must be aligned to an 8 bytes boundary.
 
 Resources are stored in the same order as the descriptors.
 
