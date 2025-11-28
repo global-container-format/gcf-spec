@@ -56,9 +56,9 @@ The Descriptor Block Size is the size, in bytes, of the descriptor block, exclud
 
 Resource alignment is expressed as the formula
 
-    alignment = 2 ^ x
+    alignment = 1 << x
 
-Where `x` is the exponent term and `^` represents the power operator. Alignment values greater than 1 require inserting padding in between two resources and before the first resource so that each resource start offset is aligned to the given value. The "resource start offset" indicates the offset from the start of the GCF file.
+Where `x` is the exponent term and `<<` is the left bitwise shift operator. Writers must insert padding before each resource to align each resource starting offset to the `alignment` boundary. Resource starting offsets are relative to the beginning of the GCF file.
 
 ## Resources
 
